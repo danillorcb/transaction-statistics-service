@@ -1,4 +1,4 @@
-# Microserviço: order-service
+# Microserviço: transaction-statistics-service
 
 ### Method: POST
 * *Endpoint:* http://host/transaction-statistics-service/transaction
@@ -29,8 +29,9 @@ message = "When the difference between timestamp transaction and system timestam
     "avg": 8390.30,
     "count": 3
 }
+```
 
----
+
 
 ## Testes JUnit e Mockito
 ![alt text](https://github.com/danillorcb/order-service/blob/master/images/junit.PNG "Testes JUnit e Mockito")
