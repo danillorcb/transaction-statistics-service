@@ -12,10 +12,10 @@
 * *Response:*
 ```
 code = 201
-message = "If the difference between timestamp transaction and system timestamp is less than 60 seconds, the object the Created"
+message = "If the difference between timestamp transaction and system timestamp is less than 60 seconds, the object is create"
 
 code = 204
-message = "When the difference between timestamp transaction and system timestamp is more than 60 seconds, the object is not created"
+message = "When the difference between timestamp transaction and system timestamp is more than 60 seconds, the object is not create"
 ```
 
 ### Method: GET
