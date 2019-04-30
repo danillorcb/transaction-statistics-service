@@ -48,11 +48,7 @@ public class TransactionStatisticsServiceController {
         } catch (Exception e) {
             throw new ServerException();
         }
-//        if (repository.add(transaction)) {
-//            return new ResponseEntity<>(HttpStatus.CREATED);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

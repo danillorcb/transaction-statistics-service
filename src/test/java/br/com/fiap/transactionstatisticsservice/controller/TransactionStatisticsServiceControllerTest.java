@@ -43,13 +43,13 @@ public class TransactionStatisticsServiceControllerTest {
 
     @Test
     public void transactionCreated() throws Exception {
-        TransactionDTO transactionDTO = new TransactionDTO(systemTimestamp - 1, 300.00);
+        TransactionDTO transactionDTO = new TransactionDTO(systemTimestamp - 1, 1000.00);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.findAndRegisterModules();
         String jsonInString = mapper.writeValueAsString(transactionDTO);
 
-        when(this.repository.add(transactionDTO)).thenCallRealMethod(); // thenReturn(true);
+        when(this.repository.add(transactionDTO)).thenCallRealMethod();
 
         mvc.perform(post("/transaction-statistics-service/transactions/")
                 .contentType("application/json").content(jsonInString))
@@ -58,13 +58,13 @@ public class TransactionStatisticsServiceControllerTest {
 
     @Test
     public void transactionNoContent() throws Exception {
-        TransactionDTO transactionDTO = new TransactionDTO(systemTimestamp - 60001, 300.00);
+        TransactionDTO transactionDTO = new TransactionDTO(systemTimestamp - 60001, 1000.00);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.findAndRegisterModules();
         String jsonInString = mapper.writeValueAsString(transactionDTO);
 
-        when(this.repository.add(transactionDTO)).thenCallRealMethod(); //thenThrow(MoreThan60SecException.class);
+        when(this.repository.add(transactionDTO)).thenCallRealMethod();
 
         mvc.perform(post("/transaction-statistics-service/transactions/")
                 .contentType("application/json").content(jsonInString))
