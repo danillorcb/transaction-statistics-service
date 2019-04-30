@@ -4,26 +4,24 @@ import br.com.fiap.transactionstatisticsservice.dto.TransactionDTO;
 import br.com.fiap.transactionstatisticsservice.exception.MoreThan60SecException;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 @Repository
 public class TransactionRepository {
 
-    private static Map<Long, TransactionDTO> transactions = new HashMap<>();
+    private static Map<Long, TransactionDTO> transactions = Collections.synchronizedMap(new HashMap<>());
 
-    public void add(TransactionDTO transaction) throws MoreThan60SecException {
+    public boolean add(TransactionDTO transaction) throws MoreThan60SecException {
         Long systemTimestamp = System.currentTimeMillis();
-
-        System.out.println("systemTimestamp: " + systemTimestamp);
-        System.out.println("transaction.getTimestamp(): " + transaction.getTimestamp());
-        System.out.println("Sub: " + (systemTimestamp - transaction.getTimestamp()));
 
         if (systemTimestamp - transaction.getTimestamp() > 60000) {
             throw new MoreThan60SecException();
         }
 
         transactions.put(transaction.getTimestamp(), transaction);
+        return true;
     }
 
     public Map<Long, TransactionDTO> getTransactionsIn60s() {

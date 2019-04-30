@@ -50,6 +50,8 @@ public class TransactionStatisticsServiceControllerTest {
         mapper.findAndRegisterModules();
         String jsonInString = mapper.writeValueAsString(transactionDTO);
 
+        when(this.repository.add(transactionDTO)).thenCallRealMethod(); // thenReturn(true);
+
         mvc.perform(post("/transaction-statistics-service/transactions/")
                 .contentType("application/json").content(jsonInString))
                 .andExpect(status().isCreated());
@@ -62,6 +64,8 @@ public class TransactionStatisticsServiceControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         mapper.findAndRegisterModules();
         String jsonInString = mapper.writeValueAsString(transactionDTO);
+
+        when(this.repository.add(transactionDTO)).thenCallRealMethod(); //thenThrow(MoreThan60SecException.class);
 
         mvc.perform(post("/transaction-statistics-service/transactions/")
                 .contentType("application/json").content(jsonInString))
