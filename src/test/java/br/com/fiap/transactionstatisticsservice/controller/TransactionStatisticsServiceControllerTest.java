@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
@@ -102,8 +101,6 @@ public class TransactionStatisticsServiceControllerTest {
         }
 
         when(this.repository.getTransactionsIn60s()).thenReturn(transactionsIn60s);
-
-        System.out.println(transactionsIn60s);
 
         mvc.perform(get("/transaction-statistics-service/statistics/")
                 .accept(MediaType.APPLICATION_JSON))
