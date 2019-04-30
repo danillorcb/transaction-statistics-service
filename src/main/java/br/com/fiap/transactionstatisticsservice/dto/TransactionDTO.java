@@ -10,9 +10,9 @@ import lombok.*;
 @AllArgsConstructor
 public class TransactionDTO {
 
-    @ApiModelProperty(notes = "Transaction amount", required = true)
-    private Double amount;
-
     @ApiModelProperty(notes = "Transaction time in milliseconds at timezone UTC", required = true)
     private Long timestamp;
+
+    @ApiModelProperty(notes = "Transaction amount", required = true)
+    private Double amount;
 }

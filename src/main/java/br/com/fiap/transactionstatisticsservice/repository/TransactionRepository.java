@@ -15,6 +15,10 @@ public class TransactionRepository {
     public void add(TransactionDTO transaction) throws MoreThan60SecException {
         Long systemTimestamp = System.currentTimeMillis();
 
+        System.out.println("systemTimestamp: " + systemTimestamp);
+        System.out.println("transaction.getTimestamp(): " + transaction.getTimestamp());
+        System.out.println("Sub: " + (systemTimestamp - transaction.getTimestamp()));
+
         if (systemTimestamp - transaction.getTimestamp() > 60000) {
             throw new MoreThan60SecException();
         }
