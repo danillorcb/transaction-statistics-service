@@ -1,4 +1,4 @@
-# Microserviço: transaction-statistics-service
+# Microservice: transaction-statistics-service
 
 ### Method: POST
 * *Endpoint:* http://localhost:8080/transaction-statistics-service/transaction
@@ -33,16 +33,19 @@ message = "When the difference between timestamp transaction and system timestam
 }
 ```
 
-## Testes JUnit e Mockito
+## JUnit e Mockito
 ![alt text](https://github.com/danillorcb/transaction-statistics-service/blob/master/images/junit.PNG "Testes JUnit e Mockito")
 
 
 ## Docker
-* Create image with Docker			
+* Create image with Docker	
+		
 `				
 docker build -f Dockerfile -t springio/transaction-statistics-service .
 `
-* Run image on port 8080									
+
+* Run image on port 8080
+									
 `
 docker run -p 8080:8080 -t springio/transaction-statistics-service
 `
